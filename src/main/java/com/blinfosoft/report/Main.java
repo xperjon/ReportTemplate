@@ -13,6 +13,7 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.core.io.ClassPathResource;
 import se.blinfo.box.core.convert.SieToBoxConverter;
 import se.digitman.lightxml.DocumentToXmlNodeParser;
 import se.digitman.lightxml.XmlDocument;
@@ -28,23 +29,20 @@ public class Main {
         new Main().start();
     }
 
-    AccountDataStore accounts;
-    RowFactory rowFactory;
-
     public void start() throws FileNotFoundException, UnsupportedEncodingException, IOException {
-        Reader reader = new InputStreamReader(new FileInputStream("C:\\Users\\jel\\Documents\\AnnualReport\\Income Statement Template.xml"), "UTF-8");
+        //Setup
+        Reader reader = new InputStreamReader(new ClassPathResource("Income Statement Template.xml").getInputStream(), "UTF-8");
         XmlNode templateRoot = new DocumentToXmlNodeParser(reader).parse();
+        XmlDocument parse = new SieToBoxConverter(new ClassPathResource("corporate accounting sie.se").getInputStream()).parse();
+        AccountDataStore accounts = new AccountDataStore(parse.getRoot());
+        RowFactory rowFactory = new RowFactory(accounts);
 
-        XmlDocument parse = new SieToBoxConverter(new FileInputStream(new File("C:\\Users\\jel\\Documents\\SIE\\corporate accounting sie.SE"))).parse();
-
-        accounts = new AccountDataStore(parse.getRoot());
-
-        rowFactory = new RowFactory(accounts);
-
+        //Create Rows
         List<ReportRow> rows = templateRoot.getChildren("Row").stream()
                 .map(rowXml -> rowFactory.create(rowXml))
                 .collect(Collectors.toList());
 
+        //Create income statement
         IncomeStatement incomeStatement = new IncomeStatement(rows);
         System.out.println(incomeStatement);
     }

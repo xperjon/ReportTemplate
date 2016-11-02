@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <Row>
+        <type>RR1</type>
+        <label>Resultaträkning</label>
+        <id>R00</id>
+        <print>J</print>
+        <XBRL>ResultatrakningKostnadsslagsindeladAbstract</XBRL>
+    </Row>
+   <Row>
+        <type>RR2</type>
+        <label>Rörelseintäkter, lagerförändringar m.m.</label>
+        <id>R01</id>
+        <print>J</print>
+        <XBRL>RorelsensIntakterLagerforandringarMmAbstract</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Nettoomsättning</label>
+        <id>R02-01</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="3000" end="3799"></account-range>
+        </accounts>
+        <XBRL>Nettoomsattning</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Förändring av lager av produkter i arbete, färdiga varor och pågående arbete för annans räkning</label>
+        <id>R02-02</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="4900" end="4909"></account-range>
+            <account-range start="4932" end="4939"></account-range>
+            <account-range start="4940" end="4959"></account-range>
+            <account-range start="4970" end="4979"></account-range>
+            <account-range start="4990" end="4999"></account-range>
+        </accounts>
+        <XBRL>ForandringAvLagerAvProdukterIArbeteFardigaVarorOchPagaendeArbetenForAnnansRakning</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Aktiverat arbete för egen räkning</label>
+        <id>R02-03</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="3800" end="3899"></account-range>
+        </accounts>
+        <XBRL>AktiveratArbeteForEgenRakning</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Övriga rörelseintäkter</label>
+        <id>R02-04</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="3900" end="3999"></account-range>
+        </accounts>
+        <XBRL>OvrigaRorelseintakter</XBRL>
+    </Row>
+    <Row>
+        <type>SR2</type>
+        <label>Summa rörelseintäkter, lagerförändringar m.m.</label>
+        <id>R03</id>
+        <print>J</print>
+        <XBRL>RorelseintakterLagerforandringarMm</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>RR2</type>
+        <label>Rörelsekostnader</label>
+        <id>R04</id>
+        <print>J</print>
+        <XBRL>RorelsekostnaderAbstract</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Råvaror och förnödenheter</label>
+        <id>R05-01</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="4200" end="4899"></account-range>
+            <account-range start="4910" end="4931"></account-range>
+        </accounts>
+        <XBRL>RavarorFornodenheterResultatrakningen</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Handelsvaror</label>
+        <id>R05-02</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="4000" end="4199"></account-range>
+            <account-range start="4960" end="4969"></account-range>
+            <account-range start="4980" end="4989"></account-range>
+        </accounts>
+        <XBRL>Handelsvaror</XBRL>
+    </Row> 
+ <Row>
+        <type>D</type>
+        <label>Övriga externa kostnader</label>
+        <id>R05-03</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="5000" end="6999"></account-range>
+        </accounts>
+        <XBRL>OvrigaExternaKostnader</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Personalkostnader</label>
+        <id>R05-04</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="7000" end="7699"></account-range>
+        </accounts>
+        <XBRL>Personalkostnader</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Av- och nedskrivningar av materiella och immateriella anläggningstillgångar</label>
+        <id>R05-05</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="7700" end="7739"></account-range>
+            <account-range start="7750" end="7789"></account-range>
+            <account-range start="7800" end="7899"></account-range>
+        </accounts>
+        <XBRL>AvskrivningarOchNedskrivningarMateriellaOchImmateriellaAnlaggningstillgangar</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Nedskrivningar av omsättningstillgångar utöver normala nedskrivningar</label>
+        <id>R05-07</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="7740" end="7749"></account-range>
+            <account-range start="7790" end="7799"></account-range>
+        </accounts>	
+        <XBRL>NedskrivningarOmsattningstillgangarUtoverNormalaNedskrivningar</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Övriga rörelsekostnader</label>
+        <id>R05-09</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="7900" end="7999"></account-range>
+        </accounts>
+        <XBRL>OvrigaRorelsekostnader</XBRL>
+    </Row>
+    <Row>
+        <type>SR2</type>
+        <label>Summa rörelsekostnader</label>
+        <id>R06</id>
+        <print>J</print>
+        <XBRL>Rorelsekostnader</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>SR1</type>
+        <label>Rörelseresultat</label>
+        <id>R07</id>
+        <print>J</print>
+        <XBRL>Rorelseresultat</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>RR2</type>
+        <label>Finansiella poster</label>
+        <id>R08</id>
+        <print>J</print>
+        <XBRL>FinansiellaPosterAbstract</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Resultat från andelar i koncernföretag</label>
+        <id>R09-01</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8000" end="8069"></account-range>
+        </accounts>	
+        <XBRL>ResultatAndelarKoncernforetag</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Resultat från andelar i intresseföretag och gemensamt styrda företag</label>
+        <id>R09-02</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8100" end="8112"></account-range>
+            <account-range start="8120" end="8122"></account-range>
+            <account-range start="8130" end="8132"></account-range>
+        </accounts>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Resultat från övriga företag som det finns ett ägarintresse i</label>
+        <id>R09-07</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8113" end="8119"></account-range>
+            <account-range start="8123" end="8129"></account-range>
+            <account-range start="8133" end="8169"></account-range>
+        </accounts>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Resultat från övriga finansiella anläggningstillgångar</label>
+        <id>R09-03</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8200" end="8269"></account-range>
+            <account-range start="8290" end="8299"></account-range>
+        </accounts>
+        <XBRL>ResultatOvrigaFinansiellaAnlaggningstillgangar</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Övriga ränteintäkter och liknande resultatposter</label>
+        <id>R09-04</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8300" end="8369"></account-range>
+            <account-range start="8390" end="8399"></account-range>
+        </accounts>
+        <XBRL>OvrigaRanteintakterOchLiknandeResultatposter</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Nedskrivningar av finansiella anläggningstillgångar och kortfristiga placeringar</label>
+        <id>R09-06</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8070" end="8099"></account-range>
+            <account-range start="8170" end="8199"></account-range>
+            <account-range start="8270" end="8299"></account-range>
+            <account-range start="8370" end="8399"></account-range>
+        </accounts>
+        <XBRL>NedskrivningarFinansiellaAnlaggningstillgangarOchKortfristigaPlaceringar</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Räntekostnader och liknande resultatposter</label>
+        <id>R09-05</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8400" end="8799"></account-range>
+        </accounts>
+        <XBRL>RantekostnaderOchLiknandeResultatposter</XBRL>
+    </Row>
+    <Row>
+        <type>SR2</type>
+        <label>Summa finansiella poster</label>
+        <id>R10</id>
+        <print>J</print>
+        <XBRL>FinansiellaPosterSumma</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>SR1</type>
+        <label>Resultat efter finansiella poster</label>
+        <id>R26</id>
+        <print>J</print>
+        <XBRL>ResultatEfterFinansiellaPoster</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>RR2</type>
+        <label>Bokslutsdispositioner</label>
+        <id>R15</id>
+        <print>J</print>
+        <XBRL>BokslutsdispositionerAbstract</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Erhållna koncernbidrag</label>
+        <id>R16-01</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8820" end="8829"></account-range>
+        </accounts>
+        <XBRL>ErhallnaKoncernbidrag</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Lämnade koncernbidrag</label>
+        <id>R16-02</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8830" end="8839"></account-range>
+        </accounts>
+        <XBRL>LamnadeKoncernbidrag</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Förändring av periodiseringsfonder</label>
+        <id>R16-03</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8800" end="8819"></account-range>
+        </accounts>
+        <XBRL>ForandringPeriodiseringsfond</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Förändring av överavskrivningar</label>
+        <id>R16-04</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8850" end="8859"></account-range>
+        </accounts>
+        <XBRL>ForandringOveravskrivningar</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Övriga bokslutsdispositioner</label>
+        <id>R16-05</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8840" end="8849"></account-range>
+            <account-range start="8860" end="8899"></account-range>
+        </accounts>
+        <XBRL>OvrigaBokslutsdispositioner</XBRL>
+    </Row>
+    <Row>
+        <type>SR2</type>
+        <label>Summa bokslutsdispositioner</label>
+        <id>R17</id>
+        <print>J</print>
+        <XBRL>BokslutsdispositionerSumma</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>SR1</type>
+        <label>Resultat före skatt</label>
+        <id>R18</id>
+        <print>J</print>
+        <XBRL>ResultatForeSkatt</XBRL>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>RR2</type>
+        <label>Skatter</label>
+        <id>R19</id>
+        <print>J</print>
+        <XBRL>SkatterAbstract</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Skatt på årets resultat</label>
+        <id>R20-01</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8900" end="8979"></account-range>
+        </accounts>
+        <XBRL>SkattAretsResultat</XBRL>
+    </Row>
+    <Row>
+        <type>D</type>
+        <label>Övriga skatter</label>
+        <id>R20-02</id>
+        <print>J</print>
+        <accounts>
+            <account-range start="8980" end="8989"></account-range>
+        </accounts>
+        <XBRL>OvrigaSkatter</XBRL>
+    </Row>
+    <Row>
+        <type>SR2</type>
+        <label>Summa skatter</label>
+        <id>R21</id>
+        <print>N</print>
+    </Row>
+    <Row>
+        <id>R</id>
+    </Row>
+    <Row>
+        <type>SR3</type>
+        <label>Årets resultat</label>
+        <id>R25</id>
+        <print>J</print>
+        <XBRL>AretsResultat</XBRL>
+    </Row>    
+</Root>
