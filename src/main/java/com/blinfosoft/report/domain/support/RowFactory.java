@@ -3,13 +3,10 @@ package com.blinfosoft.report.domain.support;
 import com.blinfosoft.report.account.Account;
 import com.blinfosoft.report.account.AccountDataStore;
 import com.blinfosoft.report.domain.ReportRow;
-import com.blinfosoft.report.domain.Row;
 import com.blinfosoft.report.domain.RowType;
-import com.blinfosoft.report.domain.strategy.impl.DefaultRowBalanceWriter;
-import com.blinfosoft.report.domain.strategy.impl.DefaultRowPrinter;
-import com.blinfosoft.report.domain.strategy.impl.DetailRowBalanceWriter;
+import com.blinfosoft.report.domain.strategy.impl.DetailRowAmountWriter;
 import com.blinfosoft.report.domain.strategy.impl.DetailRowPrinter;
-import com.blinfosoft.report.domain.strategy.impl.SummaryRowBalanceWriter;
+import com.blinfosoft.report.domain.strategy.impl.SummaryRowAmountWriter;
 import com.blinfosoft.report.domain.strategy.impl.SummaryRowPrinter;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +35,7 @@ public class RowFactory {
                 return new RowBuilder()
                         .type(type)
                         .label(label)
-                        .balanceWriter(new DetailRowBalanceWriter())
+                        .balanceWriter(new DetailRowAmountWriter())
                         .printer(new DetailRowPrinter())
                         .accounts(getAccountsFromXmlTemplate(row))
                         .build();
@@ -48,7 +45,7 @@ public class RowFactory {
                 return new RowBuilder()
                         .type(type)
                         .label(label)
-                        .balanceWriter(new SummaryRowBalanceWriter())
+                        .balanceWriter(new SummaryRowAmountWriter())
                         .printer(new SummaryRowPrinter())
                         .build();
             default:

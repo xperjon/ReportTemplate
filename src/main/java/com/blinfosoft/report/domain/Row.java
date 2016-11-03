@@ -4,7 +4,7 @@ import com.blinfosoft.report.account.Account;
 import com.blinfosoft.report.domain.strategy.RowPrinter;
 import java.util.List;
 import java.util.Optional;
-import com.blinfosoft.report.domain.strategy.RowBalanceWriter;
+import com.blinfosoft.report.domain.strategy.RowAmountWriter;
 
 /**
  *
@@ -14,16 +14,17 @@ public class Row implements ReportRow {
 
     private RowType type;
     private String label;
-    private RowBalanceWriter balanceWriter;
+    private Double amount;
+    private RowAmountWriter amountWriter;
     private RowPrinter printer;
     private Optional<List<Account>> accounts;
     private Report report;
     private Integer lineNumber;
 
-    public Row(RowType type, String label, RowBalanceWriter balanceWriter, RowPrinter printer, Optional<List<Account>> accounts) {
+    public Row(RowType type, String label, RowAmountWriter balanceWriter, RowPrinter printer, Optional<List<Account>> accounts) {
         this.type = type;
         this.label = label;
-        this.balanceWriter = balanceWriter;
+        this.amountWriter = balanceWriter;
         this.printer = printer;
         this.accounts = accounts;
     }
@@ -48,8 +49,8 @@ public class Row implements ReportRow {
     }
 
     @Override
-    public Optional<Double> getBalance() {
-        return balanceWriter.writeBalance(this, report);
+    public Optional<Double> getAmount() {
+        return amount != null ? Optional.of(amount) : amountWriter.writeAmount(this, report);
     }
 
     @Override
@@ -90,8 +91,8 @@ public class Row implements ReportRow {
         this.label = label;
     }
 
-    public void setBalanceWriter(RowBalanceWriter writer) {
-        this.balanceWriter = writer;
+    public void setBalanceWriter(RowAmountWriter writer) {
+        this.amountWriter = writer;
     }
 
     public void setRowPrinter(RowPrinter printer) {
@@ -100,6 +101,16 @@ public class Row implements ReportRow {
 
     public void setAccounts(List<Account> accounts) {
         this.accounts = Optional.of(accounts);
+    }
+
+    @Override
+    public Report getReport() {
+        return this.report;
+    }
+
+    @Override
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
 }

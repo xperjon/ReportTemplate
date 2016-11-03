@@ -1,8 +1,5 @@
 package com.blinfosoft.report.domain;
 
-import com.blinfosoft.report.domain.ReportRow;
-import com.blinfosoft.report.domain.RowType;
-import com.blinfosoft.report.domain.Report;
 import com.blinfosoft.report.util.StreamUtils;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +46,7 @@ public class IncomeStatement implements Report {
 
     @Override
     public List<ReportRow> getRowsInBetween(Integer from, Integer to, RowType type) {
-        if(to <= from) {
+        if (to <= from) {
             throw new IllegalArgumentException("From parameter must be strictly less than to parameter");
         }
         Set<Integer> lineNumbers = reportRows.keySet().stream()
@@ -62,6 +59,11 @@ public class IncomeStatement implements Report {
                 .filter(entry -> lineNumbers.contains(entry.getKey()))
                 .map(entry -> entry.getValue())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ReportType getType() {
+        return ReportType.INCOME_STATEMENT;
     }
 
 }

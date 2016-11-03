@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author jel
  */
 @FunctionalInterface
-public interface RowBalanceWriter {
+public interface RowAmountWriter {
 
-    Optional<Double> writeBalance(ReportRow row, Report report);
+    Optional<Double> writeAmount(ReportRow row, Report report);
 }

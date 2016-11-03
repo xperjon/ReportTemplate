@@ -11,7 +11,7 @@ public class DetailRowPrinter implements RowPrinter {
 
     @Override
     public String print(ReportRow row) {
-        return "\t" + row.getLabel() +"\t\t"+ row.getBalance();
+        return "\t" + row.getLabel() +"\t\t"+ row.getAmount();
     }
 
 }

@@ -18,11 +18,15 @@ public interface ReportRow {
 
     String getLabel();
 
-    Optional<Double> getBalance();
+    Optional<Double> getAmount();
+    
+    void setAmount(Double amount);
 
     Optional<List<Account>> getAccounts();
 
     void setReport(Report report);
+    
+    Report getReport();
     
     boolean isMatchingHeaderRow(ReportRow otherRow);
 

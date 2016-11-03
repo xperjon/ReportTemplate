@@ -4,8 +4,6 @@ import com.blinfosoft.report.domain.IncomeStatement;
 import com.blinfosoft.report.account.AccountDataStore;
 import com.blinfosoft.report.domain.ReportRow;
 import com.blinfosoft.report.domain.support.RowFactory;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,6 +31,7 @@ public class Main {
         //Setup
         Reader reader = new InputStreamReader(new ClassPathResource("Income Statement Template.xml").getInputStream(), "UTF-8");
         XmlNode templateRoot = new DocumentToXmlNodeParser(reader).parse();
+        
         XmlDocument parse = new SieToBoxConverter(new ClassPathResource("corporate accounting sie.se").getInputStream()).parse();
         AccountDataStore accounts = new AccountDataStore(parse.getRoot());
         RowFactory rowFactory = new RowFactory(accounts);

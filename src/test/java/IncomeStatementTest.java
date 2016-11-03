@@ -1,7 +1,6 @@
 
 import com.blinfosoft.report.domain.IncomeStatement;
 import com.blinfosoft.report.domain.ReportRow;
-import com.blinfosoft.report.domain.Row;
 import com.blinfosoft.report.domain.RowType;
 import com.blinfosoft.report.domain.support.RowBuilder;
 import java.util.Arrays;
