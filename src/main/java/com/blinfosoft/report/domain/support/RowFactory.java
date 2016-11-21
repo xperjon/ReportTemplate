@@ -11,8 +11,11 @@ import com.blinfosoft.report.domain.strategy.impl.SummaryRowPrinter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import se.digitman.lightxml.XmlNode;
 
 /**
@@ -56,28 +59,27 @@ public class RowFactory {
         }
     }
 
-    private List<Account> getAccountsFromXmlTemplate(XmlNode row) {
+    private Stream<Account> getAccountStream(XmlNode row) {
+        String start = row.getAttribute("start");
+        String end = row.getAttribute("end");
+        return IntStream.rangeClosed(Integer.parseInt(start), Integer.parseInt(end))
+                .mapToObj(number -> accountStore.getAccountByNumber(number))
+                .filter(a -> a.isPresent())
+                .map(a -> a.get());
+    }
 
-        XmlNode accountsXml = row.hasChildNamed("accounts") ? row.getChild("accounts") : null;
-        Optional<XmlNode> accountsNode = Optional.ofNullable(accountsXml);
+    public List<Account> getAccountsFromXmlTemplate(XmlNode row) {
+        Optional<XmlNode> accountsXml = row.hasChildNamed("accounts") ? Optional.of(row.getChild("accounts")) : Optional.empty();
 
-        Optional<List<XmlNode>> accountRange = accountsNode.map(a -> a.getChildren("account-range"));
-
-        List<Account> result = new ArrayList<>();
-
-        accountRange.ifPresent((l) -> {
-            l.stream().forEach((XmlNode xml) -> {
-                String start = xml.getAttribute("start");
-                String end = xml.getAttribute("end");
-                List<Account> collect = IntStream.rangeClosed(Integer.parseInt(start), Integer.parseInt(end))
-                        .mapToObj(number -> accountStore.getAccountByNumber(number))
-                        .filter(a -> a.isPresent())
-                        .map(a -> a.get())
-                        .collect(Collectors.toList());
-                result.addAll(collect);
-            });
-        });
-
-        return result;
+        Function<XmlNode,Stream<XmlNode>> toStream = xml -> Stream.of(xml);
+        Supplier<? extends Stream<XmlNode>> emptyStream = () -> Stream.empty();
+        Function<XmlNode,Stream<XmlNode>> toAccountRangeStream = xml -> xml.getChildren("account-range").stream();
+        
+        return accountsXml
+                .map(toStream)
+                .orElseGet(emptyStream)
+                .flatMap(toAccountRangeStream)
+                .flatMap(this::getAccountStream)
+                .collect(Collectors.toList());
     }
 }
