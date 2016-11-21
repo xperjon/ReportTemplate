@@ -34,7 +34,7 @@ public class RowFactoryTest {
     static XmlNode templateRoot;
     static XmlNode boxRoot;
     AccountDataStore mockedAccountDataStore;
-    
+
     public RowFactoryTest() {
     }
 
@@ -60,7 +60,7 @@ public class RowFactoryTest {
             @Override
             public Optional<Account> answer(InvocationOnMock invocation) throws Throwable {
                 Object[] arguments = invocation.getArguments();
-                return Optional.of(new Account((Integer)arguments[0]));
+                return Optional.of(new Account((Integer) arguments[0]));
             }
         });
     }
@@ -69,24 +69,21 @@ public class RowFactoryTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void hello() {
         RowFactory rowFactory = new RowFactory(mockedAccountDataStore);
-        
-        XmlNode rowR0202= templateRoot.getChildren("Row").stream()
+
+        XmlNode rowR0202 = templateRoot.getChildren("Row").stream()
                 .filter(xml -> xml.hasChildNamed("id"))
                 .filter(xml -> xml.getChild("id").getText().equals("R02-02"))
                 .findFirst()
                 .get();
-        
+
         ReportRow reportRow = rowFactory.create(rowR0202);
         assertEquals(true, reportRow.getAccounts().isPresent());
         List<Account> accounts = reportRow.getAccounts().get();
         assertEquals(new Account(4900), accounts.get(0));
-        assertEquals(new Account(4999), accounts.get(accounts.size()-1));
+        assertEquals(new Account(4999), accounts.get(accounts.size() - 1));
         assertEquals(true, accounts.contains(new Account(4932)));
         assertEquals(true, accounts.contains(new Account(4932)));
         assertEquals(true, accounts.contains(new Account(4940)));
@@ -95,8 +92,21 @@ public class RowFactoryTest {
         assertEquals(true, accounts.contains(new Account(4979)));
         assertEquals(true, accounts.contains(new Account(4990)));
         assertEquals(true, accounts.contains(new Account(4999)));
-        
-        
+
         assertEquals(false, accounts.contains(new Account(4931)));
+    }
+
+    @Test
+    public void missingAccountTag() {
+        RowFactory rowFactory = new RowFactory(mockedAccountDataStore);
+
+        XmlNode rowR01 = templateRoot.getChildren("Row").stream()
+                .filter(xml -> xml.hasChildNamed("id"))
+                .filter(xml -> xml.getChild("id").getText().equals("R01"))
+                .findFirst()
+                .get();
+
+        ReportRow reportRow = rowFactory.create(rowR01);
+        assertEquals(false, reportRow.getAccounts().isPresent());
     }
 }

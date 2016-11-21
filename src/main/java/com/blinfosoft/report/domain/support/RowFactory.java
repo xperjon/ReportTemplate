@@ -8,6 +8,7 @@ import com.blinfosoft.report.domain.strategy.impl.DetailRowAmountWriter;
 import com.blinfosoft.report.domain.strategy.impl.DetailRowPrinter;
 import com.blinfosoft.report.domain.strategy.impl.SummaryRowAmountWriter;
 import com.blinfosoft.report.domain.strategy.impl.SummaryRowPrinter;
+import com.blinfosoft.report.util.StreamUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,15 +70,9 @@ public class RowFactory {
     }
 
     public List<Account> getAccountsFromXmlTemplate(XmlNode row) {
-        Optional<XmlNode> accountsXml = row.hasChildNamed("accounts") ? Optional.of(row.getChild("accounts")) : Optional.empty();
-
-        Function<XmlNode,Stream<XmlNode>> toStream = xml -> Stream.of(xml);
-        Supplier<? extends Stream<XmlNode>> emptyStream = () -> Stream.empty();
         Function<XmlNode,Stream<XmlNode>> toAccountRangeStream = xml -> xml.getChildren("account-range").stream();
         
-        return accountsXml
-                .map(toStream)
-                .orElseGet(emptyStream)
+        return StreamUtils.toStream(row.getChild("accounts"))
                 .flatMap(toAccountRangeStream)
                 .flatMap(this::getAccountStream)
                 .collect(Collectors.toList());
