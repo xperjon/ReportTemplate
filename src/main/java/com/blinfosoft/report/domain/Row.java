@@ -17,11 +17,11 @@ public class Row implements ReportRow {
     private Double amount;
     private RowAmountWriter amountWriter;
     private RowPrinter printer;
-    private Optional<List<Account>> accounts;
+    private List<Account> accounts;
     private Report report;
     private Integer lineNumber;
 
-    public Row(RowType type, String label, RowAmountWriter balanceWriter, RowPrinter printer, Optional<List<Account>> accounts) {
+    public Row(RowType type, String label, RowAmountWriter balanceWriter, RowPrinter printer, List<Account> accounts) {
         this.type = type;
         this.label = label;
         this.amountWriter = balanceWriter;
@@ -54,7 +54,7 @@ public class Row implements ReportRow {
     }
 
     @Override
-    public Optional<List<Account>> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
@@ -100,7 +100,7 @@ public class Row implements ReportRow {
     }
 
     public void setAccounts(List<Account> accounts) {
-        this.accounts = Optional.of(accounts);
+        this.accounts = accounts;
     }
 
     @Override

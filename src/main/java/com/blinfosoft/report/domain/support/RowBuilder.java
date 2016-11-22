@@ -10,6 +10,7 @@ import com.blinfosoft.report.domain.strategy.impl.DefaultRowPrinter;
 import java.util.List;
 import java.util.Optional;
 import com.blinfosoft.report.domain.strategy.RowAmountWriter;
+import java.util.Collections;
 
 /**
  *
@@ -20,7 +21,7 @@ public class RowBuilder {
     private final Row row;
 
     public RowBuilder() {
-        this.row = new Row(RowType.BLANK, "", new DefaultRowAmountWriter(), new DefaultRowPrinter(), Optional.empty());
+        this.row = new Row(RowType.BLANK, "", new DefaultRowAmountWriter(), new DefaultRowPrinter(), Collections.EMPTY_LIST);
     }
 
     public RowBuilder type(RowType type) {

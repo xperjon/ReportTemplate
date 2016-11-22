@@ -22,7 +22,7 @@ public interface ReportRow {
     
     void setAmount(Double amount);
 
-    Optional<List<Account>> getAccounts();
+    List<Account> getAccounts();
 
     void setReport(Report report);
     

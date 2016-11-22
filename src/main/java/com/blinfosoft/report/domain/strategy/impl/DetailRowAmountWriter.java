@@ -17,7 +17,7 @@ public class DetailRowAmountWriter implements RowAmountWriter {
 
     @Override
     public Optional<Double> writeAmount(ReportRow row, Report report) {
-        List<Account> accounts = row.getAccounts().orElse(Collections.EMPTY_LIST);
+        List<Account> accounts = row.getAccounts();
         return accounts.stream()
                 .map(a -> a.getBalance())
                 .collect(NullSummingCollector.sum());

@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -70,7 +71,7 @@ public class RowFactoryTest {
     }
 
     @Test
-    public void hello() {
+    public void rowWithAccountTag() {
         RowFactory rowFactory = new RowFactory(mockedAccountDataStore);
 
         XmlNode rowR0202 = templateRoot.getChildren("Row").stream()
@@ -80,8 +81,8 @@ public class RowFactoryTest {
                 .get();
 
         ReportRow reportRow = rowFactory.create(rowR0202);
-        assertEquals(true, reportRow.getAccounts().isPresent());
-        List<Account> accounts = reportRow.getAccounts().get();
+        assertEquals(true, reportRow.getAccounts().size() > 0);
+        List<Account> accounts = reportRow.getAccounts();
         assertEquals(new Account(4900), accounts.get(0));
         assertEquals(new Account(4999), accounts.get(accounts.size() - 1));
         assertEquals(true, accounts.contains(new Account(4932)));
@@ -97,16 +98,16 @@ public class RowFactoryTest {
     }
 
     @Test
-    public void missingAccountTag() {
+    public void rowWithMissingAccountTag() {
         RowFactory rowFactory = new RowFactory(mockedAccountDataStore);
 
         XmlNode rowR01 = templateRoot.getChildren("Row").stream()
                 .filter(xml -> xml.hasChildNamed("id"))
-                .filter(xml -> xml.getChild("id").getText().equals("R01"))
+                .filter(xml -> xml.getChild("id").getText().equals("R"))
                 .findFirst()
                 .get();
 
         ReportRow reportRow = rowFactory.create(rowR01);
-        assertEquals(false, reportRow.getAccounts().isPresent());
+        assertEquals(0, reportRow.getAccounts().size());
     }
 }

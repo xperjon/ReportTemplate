@@ -71,7 +71,6 @@ public class RowFactory {
 
     public List<Account> getAccountsFromXmlTemplate(XmlNode row) {
         Function<XmlNode,Stream<XmlNode>> toAccountRangeStream = xml -> xml.getChildren("account-range").stream();
-        
         return StreamUtils.toStream(row.getChild("accounts"))
                 .flatMap(toAccountRangeStream)
                 .flatMap(this::getAccountStream)

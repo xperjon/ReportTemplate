@@ -67,6 +67,7 @@
     </Row>
     <Row>
         <id>R</id>
+        <type>D</type>
     </Row>
     <Row>
         <type>RR2</type>
@@ -342,6 +343,7 @@
     </Row>
     <Row>
         <id>R</id>
+        <type>D</type>
     </Row>
     <Row>
         <type>SR1</type>
